@@ -3,12 +3,15 @@
 
 int main() {
   int start = 0x1f0a1;
-  int end = start + 13;
   char out[5];
-  for (int i = start; i <= end; i++) {
-    utf8_encode(out, i);
-    printf("%s\n", out);
+  for(int k=0; k<4;k++){
+    for (int i = 0; i < 14; i++) {
+      if(i==11) continue;
+      utf8_encode(out, start + i);
+      printf("%s ", out);
+    }
+    printf("\n");
+    start = start + 0x10;
   }
-
   return 0;
 }
