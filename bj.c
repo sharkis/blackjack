@@ -17,7 +17,7 @@ void gendeck(int *deck) {
   char out[5];         // four bytes for unicode output + null byte
   for (int i = 0; i < 6; i++) {
     for (int k = 0; k < 4; k++) {
-      for (int j = 0; j < 14; j++) {
+      for (int j = 0; j < 13; j++) {
         int cardno = start + (k * 16) + j;
         if (j >= 11)
           cardno++;
