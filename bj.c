@@ -15,7 +15,7 @@ int main() {
          "This is free software, and you are welcome to redistribute it\n"
          "under certain conditions.\n\n");
   int hand[21] = {0}; // biggest possible hand, 21 straight aces
-  int deck[312] = {0};
+  int deck[DECK_SIZE] = {0};
   // create deck 6 decks of 52 cards
   gendeck(deck, DECK_SIZE);
   // shuffle deck
@@ -23,7 +23,7 @@ int main() {
   // TODO deal cards
 
   char out[5]; // four bytes for unicode output + null byte
-  for (int i = 0; i < 312; i++) {
+  for (int i = 0; i < DECK_SIZE; i++) {
     utf8_encode(out, deck[i]);
     if (i % 52 == 0)
       printf("\n");
