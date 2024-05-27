@@ -1,3 +1,5 @@
+#include "utf8_encode.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 int cardvalue(int card) {
@@ -32,3 +34,36 @@ void shufdeck(int *deck, int n) {
   }
 }
 
+void printhand(int *hand) {
+  char out[5]; // four bytes for unicode output + null byte
+  int pos = 0;
+  int curcard = hand[pos];
+  while (curcard != 0) {
+    utf8_encode(out, curcard);
+    printf("%s  ", out);
+    curcard = hand[++pos];
+  }
+  printf("\n");
+}
+
+int handvalue(int *hand) {
+  int pos = 0;
+  int curcard = hand[pos];
+  int curValue = 0;
+  while (curcard != 0) {
+    curValue += cardvalue(curcard);
+    curcard = hand[++pos];
+  }
+  return curValue;
+}
+
+// void printdeck() {
+//   char out[5]; // four bytes for unicode output + null byte
+//   for (int i = 0; i < DECK_SIZE; i++) {
+//     utf8_encode(out, deck[i]);
+//     if (i % 52 == 0)
+//       printf("\n");
+//     printf("%s  ", out);
+//   }
+//   printf("\n");
+// }
