@@ -1,5 +1,6 @@
 #include "deck.h"
 #include <stdio.h>
+#include <time.h>
 #define DECK_SIZE 312
 
 /*TODO
@@ -9,6 +10,7 @@
  */
 
 int main() {
+	srand(time(NULL));
   printf("blackjack Copyright (C) 2024  Albert Sharkis\n"
          "This program comes with ABSOLUTELY NO WARRANTY\n"
          "This is free software, and you are welcome to redistribute it\n"
