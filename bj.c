@@ -5,6 +5,7 @@
 
 /*TODO
  * finish game set-up
+ * dealer logic
  * betting
  * insurance
  */
@@ -46,18 +47,24 @@ int main() {
   char action[100];
   fgets(action, sizeof(action), stdin);
   char a = cupper(action[0]);
-  while (a == 'H') {
+  while (a != 'S') {
+    if ('H' == a) {
       hand[handsize++] = deck[cardi++];
       int v = handvalue(hand);
-      printf("Current hand value: %d\n", handvalue(hand));
       if (v > 21) {
-	a = 'B';
+        a = 'S';
         printf("Bust!\n");
       } else {
+        printf("Current hand value: %d\n", handvalue(hand));
         printf("(H)it or (S)tay? ");
-        fgets(action, 2, stdin);
+        fgets(action, sizeof(action), stdin);
         a = cupper(action[0]);
       }
+    } else {
+      printf("(H)it or (S)tay? ");
+      fgets(action, sizeof(action), stdin);
+      a = cupper(action[0]);
+    }
   }
   if ('S' == a) {
     int v = handvalue(hand);
@@ -66,7 +73,7 @@ int main() {
     printf("Your hand value: %d\n", v);
     printhand(dealerhand);
     printf("Dealer hand value: %d\n", dv);
-    if (v > dv) {
+    if (v > dv && v < 21) {
       printf("You win!\n");
     } else {
       printf("You lose!\n");
