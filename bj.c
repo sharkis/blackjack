@@ -4,10 +4,9 @@
 #define DECK_SIZE 312
 
 /*TODO
- * finish game set-up
- * dealer logic
  * betting
  * insurance
+ * split
  */
 
 char cupper(char c) {
