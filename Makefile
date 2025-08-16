@@ -1,5 +1,7 @@
 all : utf8_encode.o deck.o
 	gcc bj.c ./utf8_encode.o ./deck.o
+debug : utf8_encode.o deck.o
+	gcc -g bj.c ./utf8_encode.o ./deck.o
 utf8encode.o : 
 	gcc -c utf8_encode.c
 deck.o : 

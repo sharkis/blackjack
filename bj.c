@@ -18,6 +18,16 @@ char cupper(char c) {
   return o;
 }
 
+int dealeractions(int *dh, int cardi, int *deck) {
+  int dv = handvalue(dh);
+  int di = 2;
+  while (dv < 17) {
+    dh[di++] = deck[cardi++];
+    dv = handvalue(dh);
+  }
+  return dv;
+}
+
 int main() {
   srand(time(NULL));
   printf("blackjack Copyright (C) 2024  Albert Sharkis\n"
@@ -67,13 +77,14 @@ int main() {
     }
   }
   if ('S' == a) {
+    int dv = dealeractions(dealerhand, cardi, deck);
     int v = handvalue(hand);
-    int dv = handvalue(dealerhand);
+
     printhand(hand);
     printf("Your hand value: %d\n", v);
     printhand(dealerhand);
     printf("Dealer hand value: %d\n", dv);
-    if (v > dv && v < 21) {
+    if ((v > dv && v < 21) || dv > 21) {
       printf("You win!\n");
     } else {
       printf("You lose!\n");
