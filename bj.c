@@ -64,6 +64,7 @@ int main() {
         a = 'S';
         printf("Bust!\n");
       } else {
+        printhand(hand);
         printf("Current hand value: %d\n", handvalue(hand));
         printf("(H)it or (S)tay? ");
         fgets(action, sizeof(action), stdin);
